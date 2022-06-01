@@ -1,0 +1,93 @@
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-nav > li {
+    padding: 0 3em 0 1em;
+}
+
+.navbar-brand {
+    padding-left: 1em;
+}
+
+.container {
+    width: 100%;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #222529;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1.25rem;
+}
+
+#welcome {
+    padding: 60px 15px 0;
+}
+
+.col-md-3 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding: 0 15px;
+}
+
+.col-md-4 {
+    position: relative;
+    min-height: 1px;
+    padding: 0 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    margin: 15px;
+}
+
+form {
+    padding: 50px 0;
+}
+
+#buttons {
+    padding: 0;
+}
+
+div > img {
+    width: 50%;
+    height: auto;
+}
+
+.success {
+    background: rgba(122, 236, 128, 0.7);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 10px 10px;
+  }
+  
+  .error {
+    background: rgba(252, 79, 79, 0.7);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 10px 10px;
+  }

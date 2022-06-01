@@ -1,0 +1,35 @@
+<%- include('../partials/header.ejs') %>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-8">
+                    <div class="card" id="item-card">
+                    <img src="/images/item_<%= item.id %>.jpg" class="img-responsive" alt="item image">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= item.name %></h5>
+                        <p class="card-text"><%= item.manufacturer %></p>
+                        <p class="card-text"><%= item.description %></p>
+                        <small class="card-text">Posted by <%= item.owner.firstName + ' ' + item.owner.lastName %></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Are you interested in this item?
+                        </div>
+                    <div class="card-body">
+                        <form id="buttons">
+                            <button type="submit" formmethod="#" formaction="/trades/<%= item.id %>/select" class="btn btn-warning mb-3">Trade It</button>
+                            <button type="submit" formmethod="#" formaction="/trades/<%= item.id %>/watch" class="btn btn-primary mb-3">Watch It</button>
+                            <% if(user == item.owner._id) { %>
+                                <button type="submit" formmethod="GET" formaction="/trades/<%= item.id %>/edit" class="btn btn-success mb-3">Edit</button>
+                                <button type="submit" formmethod="POST" formaction="/trades/<%= item.id %>?_method=DELETE" class="btn btn-danger mb-3">Delete</button>
+                            <% } %>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+<%- include('../partials/footer.ejs') %>

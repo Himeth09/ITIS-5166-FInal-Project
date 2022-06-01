@@ -1,0 +1,74 @@
+<%- include('../partials/header.ejs')%>
+    <main>
+        <div class = "container">
+            <h2>Hi, <%= user.firstName %></h2>
+            <% if(items.length) { %>
+                <p>You have put up the following items for trade.</p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Category</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <% let i = 1; %>
+                    <% items.forEach(item => { %>
+                        <tr>
+                            <th scope="row"><%= i %></th>
+                            <td><%= item.name %></td>
+                            <td><%= item.category %></td>
+                            <td>
+                                <form id="profile-item-buttons">
+                                    <button type="submit" formmethod="GET" formaction="/trades/<%= item.id %>/edit" class="btn btn-success mb-3">Edit</button>
+                                    <button type="submit" formmethod="POST" formaction="/trades/<%= item.id %>?_method=DELETE" class="btn btn-danger mb-3">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% i++; %>
+                    <% }); %>
+                </table>
+            <% }else { %>
+                <p>You have not put up any items for trade.</p>
+            <% } %>
+        </div>
+        <div class="container">
+            <% if(watching.length) { %>
+                <p>You are watching the following items.</p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <% let i = 1; %>
+                    <% watching.forEach(item => { %>
+                        <tr>
+                            <th scope="row"><%= i %></th>
+                            <td><%= item.name %></td>
+                            <td><%= item.category %></td>
+                            <% if(item.availability == true){ %>
+                                <td>Available</td>
+                            <% }else{ %>
+                                <td>Offer Pending</td>
+                            <% } %>
+                            <td>
+                                <form id="profile-watch-button">
+                                    <button type="submit" formmethod="GET" formaction="/trades/<%= item.id %>/unwatch" class="btn btn-primary mb-3">Unwatch</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% i++; %>
+                    <% }); %>
+                </table>
+            <% }else { %>
+                <p>You are not watching any items.</p>
+            <% } %>
+        </div>
+    </main>
+<%- include('../partials/footer.ejs')%>

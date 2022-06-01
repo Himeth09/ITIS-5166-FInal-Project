@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs') %>
+<main class="container" >
+    <div class="row">
+    <% if(items.length) { %>
+        <% let catArr = []; %>
+        <% items.forEach(item => { %>
+            <% if(!catArr.includes(item.category)) { %>
+                <% catArr.push(item.category); %>
+            <% } %>
+        <% }); %>
+        <% catArr.forEach(category => { %>
+            <div class="col-md-3" id="trade-category-1">
+                    <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title" id="category-<%= category %>"><%= category %></h5>
+                        <% items.forEach(item => { %>
+                            <% if(category == item.category) { %>
+                                <a href="/trades/<%= item.id %>" class="btn btn-primary" role="button"><%= item.name %></a>
+                            <% } %>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>There are no stories to display</p>
+    <% } %>
+            
+    </div>
+</main>
+<%- include('../partials/footer.ejs') %>
